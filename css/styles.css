@@ -1,0 +1,17 @@
+#master{
+    margin: 0 auto;
+    width: 800px;
+}
+#parent{   
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 800px;
+    height: 600px;
+}
+#board{
+    width: 80%;
+    height: 80%;
+    display: inline-block;
+}
