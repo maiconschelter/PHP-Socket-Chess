@@ -19,7 +19,7 @@ class ChessServer implements MessageComponentInterface{
         $this->clients->detach($oConn);
     }
 
-    public function onError(ConnectionInterface $oConn, \Exception $oEx){
+    public function onError(ConnectionInterface $oConn, Exception $oEx){
         $oConn->close();
     }
 

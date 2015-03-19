@@ -1,3 +1,11 @@
+<?php
+@session_start();
+if(isset($_POST['login']) && isset($_POST['username'])){
+    $_SESSION['username'] = $_POST['username'];
+    echo true;
+    die;
+}
+?>
 <html>
     <head>
         <title>..:: Socket Chess ::..</title>
@@ -13,10 +21,40 @@
         <script type="text/javascript" src="js/functions.js"></script>
     </head>
     <body>
-        <div id="master">
+    <?
+        if(!isset($_SESSION['username'])){
+        ?>
+            <div id="master">
             <div id="parent">
-                <div id="board"></div>
+                <div id="board">
+                    <img alt="" src="img/logo.jpg"/>
+                    <label for="txtUser">Informe um apelido para iniciar:</label>
+                    <br/>
+                    <input type="text" name="txtUser" id="txtUser" maxlength="256" size="50"/>
+                    <br/><br/>
+                    <button name="btnEnviar" id="btnEnviar">Entrar</button>
+                    <button name="btnLimpar" id="btnLimpar">Limpar</button>
+                </div>
             </div>
         </div>
+        <?
+        }
+        else{
+        ?>
+        <div id="master">
+            <div id="parent">
+                <div id="user">
+                    <h2 id="username"><?=$_SESSION['username']?><h2>
+                </div>
+                <div id="board"></div>
+                <div id="console">
+                    <h4>Iniciou o jogo...<h4>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">$(document).ready(init);</script>
+        <?
+        }
+    ?>
     </body>
 </html>
